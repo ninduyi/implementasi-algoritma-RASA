@@ -1,0 +1,73 @@
+============================================================
+       SOKA REAL-WORLD RASA SCHEDULER DEMO (AWS)
+============================================================
+[INFO] Algoritma   : RASA
+[INFO] Topologi     : 2 EC2 Host, 4 VM Guest (KVM/libvirt)
+[INFO] Jumlah Task : 300 task independen (Dataset GoCJ)
+------------------------------------------------------------
+
+[PREFLIGHT] Memeriksa konektivitas ke seluruh worker...
++---------------+--------------+----------------------+-------+-----------+----------------------+
+| Host ID       | VM ID        | Hostname Tamu        | Slots | BusySlots | Endpoint             |
++---------------+--------------+----------------------+-------+-----------+----------------------+
+| rasa-host-1   | rasa-vm1     | joses-MacBook-Pro.local | 1     | 0         | http://127.0.0.1:18001 |
+| rasa-host-1   | rasa-vm2     | joses-MacBook-Pro.local | 1     | 0         | http://127.0.0.1:18002 |
+| rasa-host-2   | rasa-vm3     | joses-MacBook-Pro.local | 1     | 0         | http://127.0.0.1:18003 |
+| rasa-host-2   | rasa-vm4     | joses-MacBook-Pro.local | 1     | 0         | http://127.0.0.1:18004 |
++---------------+--------------+----------------------+-------+-----------+----------------------+
+[PREFLIGHT] Status: OK (4 worker aktif dan siap)
+
+[CALIBRATE] Mengkalibrasi throughput komputasi SHA-256 worker...
+[CALIBRATE] Memakai kalibrasi tersimpan: hasil_benchmark/calibration_300.properties
+  - rasa-vm1   (rasa-host-1 ): 3,682,712 iterasi/detik (median kalibrasi)
+  - rasa-vm2   (rasa-host-1 ): 4,051,355 iterasi/detik (median kalibrasi)
+  - rasa-vm3   (rasa-host-2 ): 4,301,612 iterasi/detik (median kalibrasi)
+  - rasa-vm4   (rasa-host-2 ): 4,422,783 iterasi/detik (median kalibrasi)
+
+[DATASET] Membaca 300 task dari dataset/GoCJ_Dataset_300.txt...
+[SCHEDULE] Menjalankan algoritma RASA...
+[SCHEDULE] Selesai dalam 5.692 ms. 300 assignment terbuat.
+
+[DISPATCH] Memulai eksekusi workload nyata pada VM guest AWS:
+[QUEUE] rasa-vm1   (rasa-host-1): 72 task dialokasikan
+[QUEUE] rasa-vm2   (rasa-host-1): 77 task dialokasikan
+[QUEUE] rasa-vm3   (rasa-host-2): 73 task dialokasikan
+[QUEUE] rasa-vm4   (rasa-host-2): 78 task dialokasikan
+[PARALLEL] Mengeksekusi workload secara bersamaan (konkuren) pada 4 VM guest AWS...
+
+  └─ [WORKER] rasa-vm1   Task-000 ( 107000 MI) -> Selesai: 0.0403 s (CPU: 0.0403 s) | Hash: 6007590d45...
+  └─ [WORKER] rasa-vm2   Task-025 (  81000 MI) -> Selesai: 0.0365 s (CPU: 0.0360 s) | Hash: 92825e79f4...
+  └─ [WORKER] rasa-vm1   Task-075 (  81000 MI) -> Selesai: 0.0257 s (CPU: 0.0255 s) | Hash: 92825e79f4...
+  └─ [WORKER] rasa-vm4   Task-050 (  97000 MI) -> Selesai: 0.0295 s (CPU: 0.0295 s) | Hash: 41f9b17e7f...
+  └─ [WORKER] rasa-vm1   Task-125 (  67000 MI) -> Selesai: 0.0208 s (CPU: 0.0208 s) | Hash: aa1a040c5b...
+  └─ [WORKER] rasa-vm4   Task-100 (  47000 MI) -> Selesai: 0.0165 s (CPU: 0.0165 s) | Hash: 9bfce82720...
+  └─ [WORKER] rasa-vm1   Task-175 ( 113000 MI) -> Selesai: 0.0329 s (CPU: 0.0329 s) | Hash: a959102b05...
+  └─ [WORKER] rasa-vm2   Task-150 (  65000 MI) -> Selesai: 0.0191 s (CPU: 0.0191 s) | Hash: b1d4e14642...
+  └─ [WORKER] rasa-vm1   Task-200 (  45000 MI) -> Selesai: 0.0133 s (CPU: 0.0133 s) | Hash: 574cba98ca...
+  └─ [WORKER] rasa-vm1   Task-250 (  87000 MI) -> Selesai: 0.0247 s (CPU: 0.0246 s) | Hash: fdd6b259bd...
+  └─ [WORKER] rasa-vm2   Task-225 (  71000 MI) -> Selesai: 0.0304 s (CPU: 0.0303 s) | Hash: 4170c291a5...
+  └─ [WORKER] rasa-vm3   Task-275 ( 109000 MI) -> Selesai: 0.0316 s (CPU: 0.0314 s) | Hash: dd3754c093...
+  └─ [WORKER] rasa-vm4   Task-299 ( 105000 MI) -> Selesai: 0.0390 s (CPU: 0.0350 s) | Hash: a7a6360b55...
+
+============================================================
+                   EXPERIMENT SUMMARY
+============================================================
+Algoritma         : RASA
+Total Task        : 300
+Task Sukses       : 300
+Task Gagal        : 0
+Makespan Aktual   : 3.8636 detik
+Rata-rata Durasi  : 0.0453 detik / task
+Throughput        : 77.6481 task / detik
+Degree of Imb.    : 0.1938
+Waktu Scheduler   : 5.692 ms
+Direktori Output  : hasil_benchmark/run_300_RASA_5
+------------------------------------------------------------
+Distribusi Beban per VM:
+  - rasa-vm3   : 73 task | 3.5374 detik eksekusi
+  - rasa-vm4   : 78 task | 3.6944 detik eksekusi
+  - rasa-vm1   : 72 task | 3.0354 detik eksekusi
+  - rasa-vm2   : 77 task | 3.3375 detik eksekusi
+============================================================
+
+[RESULT] Seluruh artefak tersimpan di: /Users/macbookprosilver/Downloads/implementasi-algoritma-RASA-main/hasil_benchmark/run_300_RASA_5

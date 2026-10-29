@@ -1,0 +1,17 @@
+{
+  "status": "SUCCESS",
+  "algorithm": "RR",
+  "source": "soka.simulasi.RasaScheduler",
+  "datacenterId": "aws-sydney",
+  "region": "ap-southeast-2",
+  "availabilityZone": "ap-southeast-2a",
+  "dataset": "dataset/GoCJ_Dataset_200.txt",
+  "tasksRequested": 200,
+  "tasksCompleted": 200,
+  "iterationsPerMi": 1.00,
+  "makespanSeconds": 2.320781,
+  "averageDurationSeconds": 0.037097,
+  "throughputTasksPerSec": 86.177904,
+  "degreeOfImbalance": 0.407319,
+  "schedulerRuntimeMs": 0.2923
+}
