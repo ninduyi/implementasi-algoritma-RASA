@@ -42,3 +42,7 @@ lib/cloudsim-3.0.3-sources.jar
 .DS_Store
 hasil/
 lib/*-sources.jar
+lib/cloudsim-examples-*.jar
+results/benchmark/
+results/latest/
+results/perbandingan_algoritma.png
