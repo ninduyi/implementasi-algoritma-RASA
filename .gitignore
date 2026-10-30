@@ -40,3 +40,5 @@ hasil_benchmark_backup*/
 hasil_benchmark_backup*/
 lib/cloudsim-3.0.3-sources.jar
 .DS_Store
+hasil/
+lib/*-sources.jar
