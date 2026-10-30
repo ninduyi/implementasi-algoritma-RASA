@@ -15,10 +15,10 @@ import java.util.Random;
  * ukuran dengan proporsi berikut:
  *
  * <pre>
- *   Small        : 3.000   - 47.999  MI  -> 35% (210 task)
- *   Medium       : 48.000  - 99.999  MI  -> 30% (180 task)
- *   Large        : 100.000 - 449.999 MI  -> 25% (150 task)
- *   Extra Large  : 450.000 - 999.999 MI  -> 10% (60  task)
+ *   Small        : 3.000   - 47.999  MI  -> 9,7%  (58 task)
+ *   Medium       : 48.000  - 99.999  MI  -> 47,5% (285 task)
+ *   Large        : 100.000 - 449.999 MI  -> 35,8% (215 task)
+ *   Extra Large  : 450.000 - 999.999 MI  -> 7,0%  (42 task)
  * </pre>
  *
  * Karena file mentah GoCJ tidak diunggah ke repo, kelas ini membangkitkan

@@ -8,6 +8,11 @@ import org.cloudbus.cloudsim.Vm;
 /**
  * Factory VM siap pakai sesuai draft desain.
  * Tipe 1: 9 unit (ID 0-8), Tipe 2: 6 unit (ID 9-14).
+ *
+ * <p>Catatan desain: kedua tipe VM memakai 1 PE dan CloudletSchedulerSpaceShared, sehingga tiap VM
+ * mengeksekusi satu cloudlet pada satu waktu. Ini sesuai model RasaScheduler (ECT = panjang / MIPS,
+ * antrean serial per VM). Jika VM tipe 1 diberi 2 PE, VM itu bisa menjalankan 2 cloudlet paralel
+ * dan estimasi completion time scheduler tidak lagi cocok dengan hasil simulasi.
  */
 public final class VmFactory {
 

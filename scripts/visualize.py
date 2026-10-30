@@ -55,6 +55,8 @@ def generate_charts(results_dir, open_in_browser=False):
     ax1.set_xlabel('Virtual Machine Guest (AWS)', fontsize=11, fontweight='bold')
     ax1.set_title(f'Distribusi Beban Kerja per Virtual Machine — {algo_name}\n(Makespan: {summary.get("makespanSeconds", 0):.2f}s | Degree of Imbalance: {summary.get("degreeOfImbalance", 0):.4f})', fontsize=12, fontweight='bold', pad=12)
 
+    # FIX_LABEL: ruang atas untuk label bar; jumlah task ditulis DI DALAM bar
+    ax1.set_ylim(0, max(b.get_height() for b in bars) * 1.35)
     # Label di atas bar
     for bar in bars:
         h = bar.get_height()
@@ -64,12 +66,16 @@ def generate_charts(results_dir, open_in_browser=False):
     # Line chart untuk task count di sumbu sekunder
     ax2 = ax1.twinx()
     ax2.plot(vm_stats['VmId'], vm_stats['task_count'], color='#e74c3c', marker='o', linewidth=2.5, markersize=8, label='Jumlah Task')
-    ax2.set_ylabel('Jumlah Task Ditugaskan', color='#c0392b', fontsize=11, fontweight='bold')
+    ax2.set_ylabel('')
     ax2.grid(False)
+    _m = vm_stats['task_count'].max()
+    ax2.set_ylim(-2.2 * _m, 1.12 * _m)
+    ax2.set_yticks([])
 
-    for i, row in vm_stats.iterrows():
-        ax2.annotate(f"{row['task_count']} task", (row['VmId'], row['task_count']),
-                     xytext=(0, 7), textcoords="offset points", ha='center', fontsize=9, fontweight='bold', color='#c0392b')
+    for bar, (_, row) in zip(bars, vm_stats.iterrows()):
+        ax1.text(bar.get_x() + bar.get_width() / 2, ax1.get_ylim()[1] * 0.03,
+                 f"{int(row['task_count'])} task", ha='center', va='bottom',
+                 fontsize=10, fontweight='bold', color='white')
 
     fig.tight_layout()
     chart1_path = os.path.join(results_dir, "vm_workload_distribution.png")
@@ -123,6 +129,7 @@ def generate_charts(results_dir, open_in_browser=False):
         except Exception:
             pass
 
+    rr_summary = None  # Perbandingan RR dinonaktifkan; perbandingan algoritma memakai grafik benchmark
     if rr_summary:
         fig, (ax_mk, ax_di) = plt.subplots(1, 2, figsize=(10, 4.5), dpi=150)
 
@@ -192,6 +199,11 @@ def create_html_dashboard(results_dir, summary, df, rr_summary, html_path):
             </ul>
         </div>
         """
+
+    algo = summary.get('algorithm', 'RASA')
+    algo_desc = {'RASA': 'Alternating Min-Min / Max-Min', 'MIN_MIN': 'Min-Min murni',
+                 'MAX_MIN': 'Max-Min murni', 'RR': 'Round-Robin'}.get(algo, '')
+    ok_pct = 100.0 * summary.get('tasksCompleted', 0) / max(summary.get('tasksRequested', 0), 1)
 
     html = f"""<!DOCTYPE html>
 <html lang="id">
@@ -298,22 +310,22 @@ def create_html_dashboard(results_dir, summary, df, rr_summary, html_path):
         <div class="metric-card">
             <h4>Algoritma</h4>
             <div class="value">{summary.get('algorithm', 'RASA')}</div>
-            <div class="desc">RASA Heuristic Core</div>
+            <div class="desc">{algo_desc}</div>
         </div>
         <div class="metric-card">
             <h4>Total Task</h4>
             <div class="value">{summary.get('tasksCompleted', 0)} / {summary.get('tasksRequested', 0)}</div>
-            <div class="desc">Tingkat Keberhasilan 100%</div>
+            <div class="desc">Tingkat keberhasilan {ok_pct:.0f}%</div>
         </div>
         <div class="metric-card">
             <h4>Makespan Aktual</h4>
             <div class="value">{summary.get('makespanSeconds', 0):.2f} s</div>
             <div class="desc">Waktu Total Batch Selesai</div>
         </div>
-        <div class="metric-card" style="border-left-color: var(--success);">
+        <div class="metric-card">
             <h4>Degree of Imbalance</h4>
             <div class="value">{summary.get('degreeOfImbalance', 0):.4f}</div>
-            <div class="desc">Beban Kerja Sangat Merata</div>
+            <div class="desc">Makin kecil makin seimbang (0 = sama rata)</div>
         </div>
         <div class="metric-card">
             <h4>Throughput</h4>
@@ -327,10 +339,10 @@ def create_html_dashboard(results_dir, summary, df, rr_summary, html_path):
             <h3>Distribusi Beban Kerja per Virtual Machine</h3>
             <img src="vm_workload_distribution.png" alt="Distribusi Beban VM">
         </div>
-        <div class="card">
+        {'''<div class="card">
             <h3>Pola Penjadwalan Berselang-Seling RASA</h3>
             <img src="rasa_alternating_strategy.png" alt="Pola Alternating RASA">
-        </div>
+        </div>''' if summary.get('algorithm', 'RASA') == 'RASA' else ''}
         {f'''<div class="card" style="grid-column: span 2;">
             <h3>Perbandingan Komparatif RASA vs Round-Robin</h3>
             <img src="comparative_evaluation.png" alt="Perbandingan RASA vs Round Robin">

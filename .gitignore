@@ -1,0 +1,42 @@
+# Security and credentials
+*.pem
+*.ppk
+*.key
+*.env
+config/workers.json
+
+# Build and IDE artifacts
+target/
+build/
+*.class
+*.jar
+!lib/*.jar
+.vscode/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# VM disks and images
+*.qcow2
+*.img
+*.iso
+*.vmdk
+
+# Logs and temporary files
+*.log
+scratch/
+tmp/
+target/
+*.pem
+*.bak
+.DS_Store
+results/runs/
+hasil_benchmark/run_*/
+hasil_benchmark/log/
+hasil_benchmark_backup/
+hasil_benchmark_backup*/
+hasil_benchmark_backup*/
+lib/cloudsim-3.0.3-sources.jar
+.DS_Store

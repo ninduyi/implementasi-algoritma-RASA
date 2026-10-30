@@ -35,7 +35,7 @@ public final class RasaRealController {
     private static final Duration CONNECT_TIMEOUT = Duration.ofSeconds(10);
     private static final Duration HEALTH_TIMEOUT = Duration.ofSeconds(5);
     private static final Duration EXECUTE_TIMEOUT = Duration.ofSeconds(120);
-    private static final long CALIBRATION_ITERATIONS = 5_000_000L;
+    private static final long CALIBRATION_ITERATIONS = 10_000_000L;
 
     public static final class WorkerConfig {
         public final String hostId;
@@ -397,13 +397,13 @@ public final class RasaRealController {
             runCalibrationTask(client, w, token, CALIBRATION_ITERATIONS);
 
             // 3 sampel ukur
-            double[] samples = new double[3];
-            for (int s = 0; s < 3; s++) {
+            double[] samples = new double[5];
+            for (int s = 0; s < 5; s++) {
                 double dur = runCalibrationTask(client, w, token, CALIBRATION_ITERATIONS);
                 samples[s] = CALIBRATION_ITERATIONS / Math.max(dur, 0.001);
             }
             Arrays.sort(samples);
-            medians[i] = samples[1]; // median
+            medians[i] = samples[2]; // median dari 5 sampel
         }
         return medians;
     }

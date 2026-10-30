@@ -7,7 +7,12 @@ REPS=${REPS:-3}
 SIZES=${SIZES:-"100 200 300 400 500"}
 ALGOS="RASA RR MIN_MIN MAX_MIN"
 OUT=hasil_benchmark
-rm -rf "$OUT"
+# Jangan hapus data lama: pindahkan ke folder cadangan bertimestamp.
+if [ -d "$OUT" ] && [ -n "$(ls -A "$OUT" 2>/dev/null)" ]; then
+  BAK="${OUT}_backup_$(date +%Y%m%d-%H%M%S)"
+  mv "$OUT" "$BAK"
+  echo "Data benchmark lama dipindahkan ke: $BAK"
+fi
 mkdir -p "$OUT/log"
 RAW="$OUT/raw.csv"
 echo "tasks,algo,rep,makespan,throughput,dob,sched_ms,sukses,gagal" > "$RAW"
