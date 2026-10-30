@@ -4,7 +4,7 @@
 
 ---
 
-## Ringkasan Eksekutif Proyek
+## Ringkasan Eksekutif Proyek 
 
 Laporan ini menyajikan perancangan, implementasi, dan pengujian empiris algoritma penjadwalan komputasi awan **Resource Aware Scheduling Algorithm (RASA)** yang ditransformasikan dari lingkungan simulasi menjadi **sistem terdistribusi nyata (*real-world*)** di atas infrastruktur **Amazon Web Services (AWS)**.
 
