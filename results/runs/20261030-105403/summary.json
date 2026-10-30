@@ -1,6 +1,6 @@
 {
   "status": "SUCCESS",
-  "algorithm": "MAX_MIN",
+  "algorithm": "RASA",
   "source": "soka.simulasi.RasaScheduler",
   "datacenterId": "aws-sydney",
   "region": "ap-southeast-2",
@@ -9,9 +9,9 @@
   "tasksRequested": 100,
   "tasksCompleted": 100,
   "iterationsPerMi": 30.00,
-  "makespanSeconds": 21.328648,
-  "averageDurationSeconds": 0.413581,
-  "throughputTasksPerSec": 4.688530,
-  "degreeOfImbalance": 0.028605,
-  "schedulerRuntimeMs": 5.2738
+  "makespanSeconds": 20.704833,
+  "averageDurationSeconds": 0.407329,
+  "throughputTasksPerSec": 4.829790,
+  "degreeOfImbalance": 0.084414,
+  "schedulerRuntimeMs": 2.1188
 }

@@ -102,8 +102,8 @@
     <div class="metrics-grid">
         <div class="metric-card">
             <h4>Algoritma</h4>
-            <div class="value">MAX_MIN</div>
-            <div class="desc">Max-Min murni</div>
+            <div class="value">RASA</div>
+            <div class="desc">Alternating Min-Min / Max-Min</div>
         </div>
         <div class="metric-card">
             <h4>Total Task</h4>
@@ -112,17 +112,17 @@
         </div>
         <div class="metric-card">
             <h4>Makespan Aktual</h4>
-            <div class="value">21.33 s</div>
+            <div class="value">20.70 s</div>
             <div class="desc">Waktu Total Batch Selesai</div>
         </div>
         <div class="metric-card">
             <h4>Degree of Imbalance</h4>
-            <div class="value">0.0286</div>
+            <div class="value">0.0844</div>
             <div class="desc">Makin kecil makin seimbang (0 = sama rata)</div>
         </div>
         <div class="metric-card">
             <h4>Throughput</h4>
-            <div class="value">4.69</div>
+            <div class="value">4.83</div>
             <div class="desc">Task per Detik</div>
         </div>
     </div>
@@ -132,7 +132,10 @@
             <h3>Distribusi Beban Kerja per Virtual Machine</h3>
             <img src="vm_workload_distribution.png" alt="Distribusi Beban VM">
         </div>
-        
+        <div class="card">
+            <h3>Pola Penjadwalan Berselang-Seling RASA</h3>
+            <img src="rasa_alternating_strategy.png" alt="Pola Alternating RASA">
+        </div>
         
     </div>
 
@@ -158,65 +161,65 @@
             <td><strong>#00</strong></td>
             <td>127,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
+            <td><code>rasa-vm1</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.3182 s</td>
-            <td>0.3178 s</td>
+            <td>0.3192 s</td>
+            <td>0.3189 s</td>
             <td><code title="c98a45ac2b5d85a39eb02bfa9ceeacdce8c33bbcc934af6c21cdbbb57a6b9aee">c98a45ac2b5d...</code></td>
         </tr>
         
         <tr>
             <td><strong>#01</strong></td>
             <td>83,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.2368 s</td>
-            <td>0.2364 s</td>
+            <td>0.2338 s</td>
+            <td>0.2336 s</td>
             <td><code title="0e33f7cfb7355a115624da34bca537ff32778fcfdb3d622d2b8d910cd50e4ee6">0e33f7cfb735...</code></td>
         </tr>
         
         <tr>
             <td><strong>#02</strong></td>
             <td>63,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm4</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>0.3014 s</td>
-            <td>0.1776 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm1</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>0.1212 s</td>
+            <td>0.1211 s</td>
             <td><code title="c10cd0fa1d72d815be05c3b3f47c7b9c0a7423f793ae7f99d26fffd8567b0309">c10cd0fa1d72...</code></td>
         </tr>
         
         <tr>
             <td><strong>#03</strong></td>
             <td>63,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.1409 s</td>
-            <td>0.1407 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm3</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.2891 s</td>
+            <td>0.1763 s</td>
             <td><code title="c10cd0fa1d72d815be05c3b3f47c7b9c0a7423f793ae7f99d26fffd8567b0309">c10cd0fa1d72...</code></td>
         </tr>
         
         <tr>
             <td><strong>#04</strong></td>
             <td>65,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
             <td><code>rasa-vm3</code></td>
             <td><code>rasa-host-2</code></td>
-            <td>0.2997 s</td>
-            <td>0.1595 s</td>
+            <td>0.2743 s</td>
+            <td>0.1768 s</td>
             <td><code title="05265ba2b1e8b53099d96155ce16f072e1718c08d7d38fe70fd00930513bdc89">05265ba2b1e8...</code></td>
         </tr>
         
         <tr>
             <td><strong>#05</strong></td>
             <td>15,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.0291 s</td>
-            <td>0.0291 s</td>
+            <td>0.0285 s</td>
+            <td>0.0285 s</td>
             <td><code title="8061989ed9427d9d230397ba628f89dbca49ab289a8526dbf4eb750811e408f4">8061989ed942...</code></td>
         </tr>
         
@@ -224,21 +227,21 @@
             <td><strong>#06</strong></td>
             <td>91,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm3</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>0.4658 s</td>
-            <td>0.2653 s</td>
+            <td><code>rasa-vm1</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>0.2198 s</td>
+            <td>0.2195 s</td>
             <td><code title="88c753e937c8037e66b6335b5829a9031424588c81a9a56d100a32e4726748bf">88c753e937c8...</code></td>
         </tr>
         
         <tr>
             <td><strong>#07</strong></td>
             <td>85,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm4</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>0.4404 s</td>
-            <td>0.2409 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm2</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>0.2074 s</td>
+            <td>0.2072 s</td>
             <td><code title="27812f4854714c821656858ff23aabbbc06d5ed9873b5f6741f0edbca0851855">27812f485471...</code></td>
         </tr>
         
@@ -246,32 +249,32 @@
             <td><strong>#08</strong></td>
             <td>101,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.2114 s</td>
-            <td>0.2111 s</td>
+            <td><code>rasa-vm3</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.4310 s</td>
+            <td>0.2498 s</td>
             <td><code title="41ecc658f6a03ae6e12b3bf9c0d5b0204ca08ce63e462fee7c9df2f945ad61a1">41ecc658f6a0...</code></td>
         </tr>
         
         <tr>
             <td><strong>#09</strong></td>
             <td>40,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.0769 s</td>
-            <td>0.0767 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm4</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.1970 s</td>
+            <td>0.1505 s</td>
             <td><code title="f7e0ad14e6fe2350626238a39950dda77a533a11a6ee4ab55030914ac1596451">f7e0ad14e6fe...</code></td>
         </tr>
         
         <tr>
             <td><strong>#10</strong></td>
             <td>40,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm1</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.0766 s</td>
-            <td>0.0764 s</td>
+            <td>0.1138 s</td>
+            <td>0.1137 s</td>
             <td><code title="f7e0ad14e6fe2350626238a39950dda77a533a11a6ee4ab55030914ac1596451">f7e0ad14e6fe...</code></td>
         </tr>
         
@@ -281,19 +284,19 @@
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
             <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>1.7646 s</td>
-            <td>1.7622 s</td>
+            <td>1.5730 s</td>
+            <td>1.5710 s</td>
             <td><code title="c6f6d4ee2c927c621ded2cdb3b64b6a7980f5287291d9edd2b519fe418d88789">c6f6d4ee2c92...</code></td>
         </tr>
         
         <tr>
             <td><strong>#12</strong></td>
             <td>59,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.1513 s</td>
-            <td>0.1511 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm3</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.2323 s</td>
+            <td>0.1316 s</td>
             <td><code title="c4824b51a7743eabd335caa8058cf6ef77c4aae2bbf0e3de3696aeac474d44c3">c4824b51a774...</code></td>
         </tr>
         
@@ -301,43 +304,43 @@
             <td><strong>#13</strong></td>
             <td>113,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm4</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>0.4792 s</td>
-            <td>0.2573 s</td>
+            <td><code>rasa-vm2</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>0.3192 s</td>
+            <td>0.3188 s</td>
             <td><code title="84ec35cf35c811b49704bf7de5ff4fe00defafa65cb1bd80368504834303a03b">84ec35cf35c8...</code></td>
         </tr>
         
         <tr>
             <td><strong>#14</strong></td>
             <td>87,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm1</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.2149 s</td>
-            <td>0.2146 s</td>
+            <td>0.2465 s</td>
+            <td>0.2462 s</td>
             <td><code title="87da052f70741c685dca3b77d01946f668d0246919d997d98389a3df507d93a9">87da052f7074...</code></td>
         </tr>
         
         <tr>
             <td><strong>#15</strong></td>
             <td>53,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.1137 s</td>
-            <td>0.1135 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm3</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.1814 s</td>
+            <td>0.1159 s</td>
             <td><code title="9a702bf4766227adf412756e4f9a72576d727f6b06c90ab7d872d43191ced5aa">9a702bf47662...</code></td>
         </tr>
         
         <tr>
             <td><strong>#16</strong></td>
             <td>47,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.1366 s</td>
-            <td>0.1365 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm3</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.2641 s</td>
+            <td>0.1658 s</td>
             <td><code title="edbaf4a5ee44ac738dee04edabf7b05ffa24c2c55177e0e05eb338c041e49292">edbaf4a5ee44...</code></td>
         </tr>
         
@@ -345,32 +348,32 @@
             <td><strong>#17</strong></td>
             <td>127,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm4</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>0.5798 s</td>
-            <td>0.3072 s</td>
+            <td><code>rasa-vm2</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>0.3573 s</td>
+            <td>0.3570 s</td>
             <td><code title="c98a45ac2b5d85a39eb02bfa9ceeacdce8c33bbcc934af6c21cdbbb57a6b9aee">c98a45ac2b5d...</code></td>
         </tr>
         
         <tr>
             <td><strong>#18</strong></td>
             <td>45,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
             <td><code>rasa-vm3</code></td>
             <td><code>rasa-host-2</code></td>
-            <td>0.1798 s</td>
-            <td>0.1283 s</td>
+            <td>0.1721 s</td>
+            <td>0.1370 s</td>
             <td><code title="f41fd01ccae36c8e4f3185bcbe7a4365837e21f8fd630474b4f77d742f41e035">f41fd01ccae3...</code></td>
         </tr>
         
         <tr>
             <td><strong>#19</strong></td>
             <td>27,500 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm3</code></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm4</code></td>
             <td><code>rasa-host-2</code></td>
-            <td>0.0602 s</td>
-            <td>0.0517 s</td>
+            <td>0.0760 s</td>
+            <td>0.0598 s</td>
             <td><code title="41bc732d46dcaeee51bdeeab2c00e5b14c9287c185a393ecea7d041bcf1c6c28">41bc732d46dc...</code></td>
         </tr>
         
@@ -380,8 +383,8 @@
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
             <td><code>rasa-vm1</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.3289 s</td>
-            <td>0.3284 s</td>
+            <td>0.3266 s</td>
+            <td>0.3263 s</td>
             <td><code title="0d3bdc5a6faf6b2e3d8b48cdb48e09336d6699cb3dc328c257749b4bc2846dc7">0d3bdc5a6faf...</code></td>
         </tr>
         
@@ -391,8 +394,8 @@
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
             <td><code>rasa-vm1</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>1.3467 s</td>
-            <td>1.3451 s</td>
+            <td>1.2390 s</td>
+            <td>1.2369 s</td>
             <td><code title="54879033403e82390b1305a0324ff71ceaeb9bfcbb4bb1f30b324c65bfbc4e53">54879033403e...</code></td>
         </tr>
         
@@ -400,10 +403,10 @@
             <td><strong>#22</strong></td>
             <td>117,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm3</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>0.5084 s</td>
-            <td>0.2934 s</td>
+            <td><code>rasa-vm1</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>0.2474 s</td>
+            <td>0.2472 s</td>
             <td><code title="e9cdbc82085ba1718731d6b7838b4b612bb2b91407efdfd8dc8d170f8536ecf7">e9cdbc82085b...</code></td>
         </tr>
         
@@ -411,54 +414,54 @@
             <td><strong>#23</strong></td>
             <td>105,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm3</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>0.5397 s</td>
-            <td>0.2922 s</td>
+            <td><code>rasa-vm2</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>0.2463 s</td>
+            <td>0.2461 s</td>
             <td><code title="82b5fc4cf45547d8a7f796a2b2feaa1a1f549c3aae97178a1910342cf0d571eb">82b5fc4cf455...</code></td>
         </tr>
         
         <tr>
             <td><strong>#24</strong></td>
             <td>65,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.1753 s</td>
-            <td>0.1751 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm4</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.2878 s</td>
+            <td>0.1542 s</td>
             <td><code title="05265ba2b1e8b53099d96155ce16f072e1718c08d7d38fe70fd00930513bdc89">05265ba2b1e8...</code></td>
         </tr>
         
         <tr>
             <td><strong>#25</strong></td>
             <td>77,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm3</code></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm4</code></td>
             <td><code>rasa-host-2</code></td>
-            <td>0.3217 s</td>
-            <td>0.1996 s</td>
+            <td>0.2593 s</td>
+            <td>0.1627 s</td>
             <td><code title="50f8c32ad4a6e109847a57ef5a4190368e7927b3e8581dde15022e0abea48103">50f8c32ad4a6...</code></td>
         </tr>
         
         <tr>
             <td><strong>#26</strong></td>
             <td>47,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.1071 s</td>
-            <td>0.1069 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm3</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.2726 s</td>
+            <td>0.1721 s</td>
             <td><code title="edbaf4a5ee44ac738dee04edabf7b05ffa24c2c55177e0e05eb338c041e49292">edbaf4a5ee44...</code></td>
         </tr>
         
         <tr>
             <td><strong>#27</strong></td>
             <td>89,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm3</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>0.3591 s</td>
-            <td>0.2099 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm2</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>0.1707 s</td>
+            <td>0.1704 s</td>
             <td><code title="ed61528e7383e8a0754f06a825f51f09d297cbac89d001f44585c0ad41062a75">ed61528e7383...</code></td>
         </tr>
         
@@ -466,10 +469,10 @@
             <td><strong>#28</strong></td>
             <td>91,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.2196 s</td>
-            <td>0.2192 s</td>
+            <td><code>rasa-vm4</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.3359 s</td>
+            <td>0.1888 s</td>
             <td><code title="88c753e937c8037e66b6335b5829a9031424588c81a9a56d100a32e4726748bf">88c753e937c8...</code></td>
         </tr>
         
@@ -477,10 +480,10 @@
             <td><strong>#29</strong></td>
             <td>105,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
+            <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.3008 s</td>
-            <td>0.2998 s</td>
+            <td>0.1997 s</td>
+            <td>0.1995 s</td>
             <td><code title="82b5fc4cf45547d8a7f796a2b2feaa1a1f549c3aae97178a1910342cf0d571eb">82b5fc4cf455...</code></td>
         </tr>
         
@@ -488,32 +491,32 @@
             <td><strong>#30</strong></td>
             <td>117,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.3206 s</td>
-            <td>0.3203 s</td>
+            <td><code>rasa-vm4</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.5008 s</td>
+            <td>0.2520 s</td>
             <td><code title="e9cdbc82085ba1718731d6b7838b4b612bb2b91407efdfd8dc8d170f8536ecf7">e9cdbc82085b...</code></td>
         </tr>
         
         <tr>
             <td><strong>#31</strong></td>
             <td>51,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.1119 s</td>
-            <td>0.1118 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm3</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.1965 s</td>
+            <td>0.1300 s</td>
             <td><code title="5b357305ec9f839592009da759e6e184f57cca268072d7fbbbb640d0e76184be">5b357305ec9f...</code></td>
         </tr>
         
         <tr>
             <td><strong>#32</strong></td>
             <td>15,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.0427 s</td>
-            <td>0.0426 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm4</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.0324 s</td>
+            <td>0.0324 s</td>
             <td><code title="8061989ed9427d9d230397ba628f89dbca49ab289a8526dbf4eb750811e408f4">8061989ed942...</code></td>
         </tr>
         
@@ -523,8 +526,8 @@
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
             <td><code>rasa-vm4</code></td>
             <td><code>rasa-host-2</code></td>
-            <td>1.4632 s</td>
-            <td>0.7674 s</td>
+            <td>1.4317 s</td>
+            <td>0.7357 s</td>
             <td><code title="925314027a4cbe9e6ba822e6e86eca9309f8ebc792c31cd726732213d782afc8">925314027a4c...</code></td>
         </tr>
         
@@ -532,21 +535,21 @@
             <td><strong>#34</strong></td>
             <td>129,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
+            <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.2603 s</td>
-            <td>0.2598 s</td>
+            <td>0.3016 s</td>
+            <td>0.3012 s</td>
             <td><code title="016fda349f49cff919ad3540cd9ec7a6b1dd6a0322e648760f795284e7f0878b">016fda349f49...</code></td>
         </tr>
         
         <tr>
             <td><strong>#35</strong></td>
             <td>47,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
             <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.1020 s</td>
-            <td>0.1019 s</td>
+            <td>0.1324 s</td>
+            <td>0.1323 s</td>
             <td><code title="edbaf4a5ee44ac738dee04edabf7b05ffa24c2c55177e0e05eb338c041e49292">edbaf4a5ee44...</code></td>
         </tr>
         
@@ -556,8 +559,8 @@
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
             <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.2087 s</td>
-            <td>0.2082 s</td>
+            <td>0.3105 s</td>
+            <td>0.3101 s</td>
             <td><code title="d1b3bd88b3cb5e259df012c888b670b77daf6b973862f6f071bc30ac415e7df7">d1b3bd88b3cb...</code></td>
         </tr>
         
@@ -567,8 +570,8 @@
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
             <td><code>rasa-vm1</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.2082 s</td>
-            <td>0.2075 s</td>
+            <td>0.2074 s</td>
+            <td>0.2071 s</td>
             <td><code title="d1b3bd88b3cb5e259df012c888b670b77daf6b973862f6f071bc30ac415e7df7">d1b3bd88b3cb...</code></td>
         </tr>
         
@@ -576,21 +579,21 @@
             <td><strong>#38</strong></td>
             <td>135,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.2570 s</td>
-            <td>0.2567 s</td>
+            <td><code>rasa-vm3</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.5689 s</td>
+            <td>0.3201 s</td>
             <td><code title="67194a6c5231da3a6fc18a5daf040bbc0107a50627e77337626b0d199ade39a4">67194a6c5231...</code></td>
         </tr>
         
         <tr>
             <td><strong>#39</strong></td>
             <td>89,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
             <td><code>rasa-vm1</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.1711 s</td>
-            <td>0.1707 s</td>
+            <td>0.2332 s</td>
+            <td>0.2330 s</td>
             <td><code title="ed61528e7383e8a0754f06a825f51f09d297cbac89d001f44585c0ad41062a75">ed61528e7383...</code></td>
         </tr>
         
@@ -598,10 +601,10 @@
             <td><strong>#40</strong></td>
             <td>101,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm4</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>0.3928 s</td>
-            <td>0.2340 s</td>
+            <td><code>rasa-vm2</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>0.2859 s</td>
+            <td>0.2855 s</td>
             <td><code title="41ecc658f6a03ae6e12b3bf9c0d5b0204ca08ce63e462fee7c9df2f945ad61a1">41ecc658f6a0...</code></td>
         </tr>
         
@@ -611,8 +614,8 @@
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
             <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.1813 s</td>
-            <td>0.1812 s</td>
+            <td>0.2675 s</td>
+            <td>0.2670 s</td>
             <td><code title="2b8ea9e062a109bf9e6fa568815dbea9319154e587043735568a4fc1fcd89834">2b8ea9e062a1...</code></td>
         </tr>
         
@@ -622,8 +625,8 @@
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
             <td><code>rasa-vm1</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.2483 s</td>
-            <td>0.2480 s</td>
+            <td>0.2818 s</td>
+            <td>0.2814 s</td>
             <td><code title="2ef760ad6f43d352a261e6ff607a876a6ebf81c31dc4a9c7283e849391d188d8">2ef760ad6f43...</code></td>
         </tr>
         
@@ -631,21 +634,21 @@
             <td><strong>#43</strong></td>
             <td>127,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.2451 s</td>
-            <td>0.2448 s</td>
+            <td><code>rasa-vm4</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.5497 s</td>
+            <td>0.2994 s</td>
             <td><code title="c98a45ac2b5d85a39eb02bfa9ceeacdce8c33bbcc934af6c21cdbbb57a6b9aee">c98a45ac2b5d...</code></td>
         </tr>
         
         <tr>
             <td><strong>#44</strong></td>
             <td>83,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.1614 s</td>
-            <td>0.1612 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm3</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.3401 s</td>
+            <td>0.1928 s</td>
             <td><code title="0e33f7cfb7355a115624da34bca537ff32778fcfdb3d622d2b8d910cd50e4ee6">0e33f7cfb735...</code></td>
         </tr>
         
@@ -655,8 +658,8 @@
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
             <td><code>rasa-vm1</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>2.0696 s</td>
-            <td>2.0668 s</td>
+            <td>2.0742 s</td>
+            <td>2.0714 s</td>
             <td><code title="09a57f478e73e9ab94cd783119b39fe01798d9c3b10cc6d668d1c55175f72d8e">09a57f478e73...</code></td>
         </tr>
         
@@ -664,21 +667,21 @@
             <td><strong>#46</strong></td>
             <td>712,500 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm4</code></td>
+            <td><code>rasa-vm3</code></td>
             <td><code>rasa-host-2</code></td>
-            <td>3.2843 s</td>
-            <td>1.6856 s</td>
+            <td>3.0772 s</td>
+            <td>1.5766 s</td>
             <td><code title="c6f6d4ee2c927c621ded2cdb3b64b6a7980f5287291d9edd2b519fe418d88789">c6f6d4ee2c92...</code></td>
         </tr>
         
         <tr>
             <td><strong>#47</strong></td>
             <td>83,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
             <td><code>rasa-vm1</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.1679 s</td>
-            <td>0.1676 s</td>
+            <td>0.1917 s</td>
+            <td>0.1915 s</td>
             <td><code title="0e33f7cfb7355a115624da34bca537ff32778fcfdb3d622d2b8d910cd50e4ee6">0e33f7cfb735...</code></td>
         </tr>
         
@@ -686,21 +689,21 @@
             <td><strong>#48</strong></td>
             <td>101,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm3</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>0.4410 s</td>
-            <td>0.2428 s</td>
+            <td><code>rasa-vm1</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>0.2646 s</td>
+            <td>0.2337 s</td>
             <td><code title="41ecc658f6a03ae6e12b3bf9c0d5b0204ca08ce63e462fee7c9df2f945ad61a1">41ecc658f6a0...</code></td>
         </tr>
         
         <tr>
             <td><strong>#49</strong></td>
             <td>59,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
             <td><code>rasa-vm4</code></td>
             <td><code>rasa-host-2</code></td>
-            <td>0.2594 s</td>
-            <td>0.1637 s</td>
+            <td>0.2078 s</td>
+            <td>0.1310 s</td>
             <td><code title="c4824b51a7743eabd335caa8058cf6ef77c4aae2bbf0e3de3696aeac474d44c3">c4824b51a774...</code></td>
         </tr>
         
@@ -708,32 +711,32 @@
             <td><strong>#50</strong></td>
             <td>105,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
+            <td><code>rasa-vm1</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.2125 s</td>
-            <td>0.2121 s</td>
+            <td>0.3011 s</td>
+            <td>0.3003 s</td>
             <td><code title="82b5fc4cf45547d8a7f796a2b2feaa1a1f549c3aae97178a1910342cf0d571eb">82b5fc4cf455...</code></td>
         </tr>
         
         <tr>
             <td><strong>#51</strong></td>
             <td>59,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.1602 s</td>
-            <td>0.1600 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm3</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.2666 s</td>
+            <td>0.1670 s</td>
             <td><code title="c4824b51a7743eabd335caa8058cf6ef77c4aae2bbf0e3de3696aeac474d44c3">c4824b51a774...</code></td>
         </tr>
         
         <tr>
             <td><strong>#52</strong></td>
             <td>47,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm4</code></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm3</code></td>
             <td><code>rasa-host-2</code></td>
-            <td>0.2035 s</td>
-            <td>0.1470 s</td>
+            <td>0.2617 s</td>
+            <td>0.1601 s</td>
             <td><code title="edbaf4a5ee44ac738dee04edabf7b05ffa24c2c55177e0e05eb338c041e49292">edbaf4a5ee44...</code></td>
         </tr>
         
@@ -743,8 +746,8 @@
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
             <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.2456 s</td>
-            <td>0.2451 s</td>
+            <td>0.3121 s</td>
+            <td>0.3116 s</td>
             <td><code title="2ef760ad6f43d352a261e6ff607a876a6ebf81c31dc4a9c7283e849391d188d8">2ef760ad6f43...</code></td>
         </tr>
         
@@ -752,10 +755,10 @@
             <td><strong>#54</strong></td>
             <td>105,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
+            <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.2579 s</td>
-            <td>0.2576 s</td>
+            <td>0.2313 s</td>
+            <td>0.2311 s</td>
             <td><code title="82b5fc4cf45547d8a7f796a2b2feaa1a1f549c3aae97178a1910342cf0d571eb">82b5fc4cf455...</code></td>
         </tr>
         
@@ -763,21 +766,21 @@
             <td><strong>#55</strong></td>
             <td>712,500 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm3</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>3.4087 s</td>
-            <td>1.7367 s</td>
+            <td><code>rasa-vm2</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>1.6122 s</td>
+            <td>1.6103 s</td>
             <td><code title="c6f6d4ee2c927c621ded2cdb3b64b6a7980f5287291d9edd2b519fe418d88789">c6f6d4ee2c92...</code></td>
         </tr>
         
         <tr>
             <td><strong>#56</strong></td>
             <td>45,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.0878 s</td>
-            <td>0.0878 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm3</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.2498 s</td>
+            <td>0.1532 s</td>
             <td><code title="f41fd01ccae36c8e4f3185bcbe7a4365837e21f8fd630474b4f77d742f41e035">f41fd01ccae3...</code></td>
         </tr>
         
@@ -785,43 +788,43 @@
             <td><strong>#57</strong></td>
             <td>109,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.3070 s</td>
-            <td>0.3064 s</td>
+            <td><code>rasa-vm3</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.5582 s</td>
+            <td>0.3259 s</td>
             <td><code title="d1b3bd88b3cb5e259df012c888b670b77daf6b973862f6f071bc30ac415e7df7">d1b3bd88b3cb...</code></td>
         </tr>
         
         <tr>
             <td><strong>#58</strong></td>
             <td>67,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.1591 s</td>
-            <td>0.1588 s</td>
+            <td>0.1634 s</td>
+            <td>0.1631 s</td>
             <td><code title="a2b0dc697d07a3946c4c1b74a59d87466897dc43de90887d03f5ee5489bac8e3">a2b0dc697d07...</code></td>
         </tr>
         
         <tr>
             <td><strong>#59</strong></td>
             <td>61,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm3</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>0.2762 s</td>
-            <td>0.1776 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm2</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>0.1713 s</td>
+            <td>0.1712 s</td>
             <td><code title="9c45fcff60798de0bf0b7d5d2cf8235d99f4636475cdf8e951cd5bc1a4ef6484">9c45fcff6079...</code></td>
         </tr>
         
         <tr>
             <td><strong>#60</strong></td>
             <td>67,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.1887 s</td>
-            <td>0.1884 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm4</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.2792 s</td>
+            <td>0.1805 s</td>
             <td><code title="a2b0dc697d07a3946c4c1b74a59d87466897dc43de90887d03f5ee5489bac8e3">a2b0dc697d07...</code></td>
         </tr>
         
@@ -829,21 +832,21 @@
             <td><strong>#61</strong></td>
             <td>127,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm3</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>0.5253 s</td>
-            <td>0.2853 s</td>
+            <td><code>rasa-vm1</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>0.3634 s</td>
+            <td>0.3628 s</td>
             <td><code title="c98a45ac2b5d85a39eb02bfa9ceeacdce8c33bbcc934af6c21cdbbb57a6b9aee">c98a45ac2b5d...</code></td>
         </tr>
         
         <tr>
             <td><strong>#62</strong></td>
             <td>87,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.2195 s</td>
-            <td>0.2193 s</td>
+            <td>0.2137 s</td>
+            <td>0.2133 s</td>
             <td><code title="87da052f70741c685dca3b77d01946f668d0246919d997d98389a3df507d93a9">87da052f7074...</code></td>
         </tr>
         
@@ -851,10 +854,10 @@
             <td><strong>#63</strong></td>
             <td>107,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm4</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>0.4579 s</td>
-            <td>0.2606 s</td>
+            <td><code>rasa-vm1</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>0.2432 s</td>
+            <td>0.2428 s</td>
             <td><code title="357526c56fbd186816dec0846424c15f40434e76dd024bcb3e18a2280b2d14c5">357526c56fbd...</code></td>
         </tr>
         
@@ -864,8 +867,8 @@
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
             <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.3802 s</td>
-            <td>0.3796 s</td>
+            <td>0.3810 s</td>
+            <td>0.3807 s</td>
             <td><code title="67194a6c5231da3a6fc18a5daf040bbc0107a50627e77337626b0d199ade39a4">67194a6c5231...</code></td>
         </tr>
         
@@ -873,10 +876,10 @@
             <td><strong>#65</strong></td>
             <td>101,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.2567 s</td>
-            <td>0.2565 s</td>
+            <td><code>rasa-vm4</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.4659 s</td>
+            <td>0.2678 s</td>
             <td><code title="41ecc658f6a03ae6e12b3bf9c0d5b0204ca08ce63e462fee7c9df2f945ad61a1">41ecc658f6a0...</code></td>
         </tr>
         
@@ -886,8 +889,8 @@
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
             <td><code>rasa-vm1</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.2737 s</td>
-            <td>0.2730 s</td>
+            <td>0.2388 s</td>
+            <td>0.2385 s</td>
             <td><code title="2b8ea9e062a109bf9e6fa568815dbea9319154e587043735568a4fc1fcd89834">2b8ea9e062a1...</code></td>
         </tr>
         
@@ -897,8 +900,8 @@
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
             <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.2892 s</td>
-            <td>0.2888 s</td>
+            <td>0.2433 s</td>
+            <td>0.2429 s</td>
             <td><code title="c98a45ac2b5d85a39eb02bfa9ceeacdce8c33bbcc934af6c21cdbbb57a6b9aee">c98a45ac2b5d...</code></td>
         </tr>
         
@@ -908,19 +911,19 @@
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
             <td><code>rasa-vm1</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>1.2477 s</td>
-            <td>1.2465 s</td>
+            <td>1.1748 s</td>
+            <td>1.1731 s</td>
             <td><code title="54879033403e82390b1305a0324ff71ceaeb9bfcbb4bb1f30b324c65bfbc4e53">54879033403e...</code></td>
         </tr>
         
         <tr>
             <td><strong>#69</strong></td>
             <td>51,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
             <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.0968 s</td>
-            <td>0.0967 s</td>
+            <td>0.0977 s</td>
+            <td>0.0976 s</td>
             <td><code title="5b357305ec9f839592009da759e6e184f57cca268072d7fbbbb640d0e76184be">5b357305ec9f...</code></td>
         </tr>
         
@@ -928,10 +931,10 @@
             <td><strong>#70</strong></td>
             <td>91,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
+            <td><code>rasa-vm1</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.2186 s</td>
-            <td>0.2182 s</td>
+            <td>0.1745 s</td>
+            <td>0.1742 s</td>
             <td><code title="88c753e937c8037e66b6335b5829a9031424588c81a9a56d100a32e4726748bf">88c753e937c8...</code></td>
         </tr>
         
@@ -939,10 +942,10 @@
             <td><strong>#71</strong></td>
             <td>91,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
+            <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.1747 s</td>
-            <td>0.1742 s</td>
+            <td>0.1738 s</td>
+            <td>0.1737 s</td>
             <td><code title="88c753e937c8037e66b6335b5829a9031424588c81a9a56d100a32e4726748bf">88c753e937c8...</code></td>
         </tr>
         
@@ -950,32 +953,32 @@
             <td><strong>#72</strong></td>
             <td>93,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.2306 s</td>
-            <td>0.2303 s</td>
+            <td><code>rasa-vm3</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.4721 s</td>
+            <td>0.2727 s</td>
             <td><code title="daa3df84fb6b5dbb50f96da8a2c2b5cd691f5fc0c7cbe7d5a80dba0a44e6225f">daa3df84fb6b...</code></td>
         </tr>
         
         <tr>
             <td><strong>#73</strong></td>
             <td>63,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm1</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.1508 s</td>
-            <td>0.1505 s</td>
+            <td>0.1252 s</td>
+            <td>0.1250 s</td>
             <td><code title="c10cd0fa1d72d815be05c3b3f47c7b9c0a7423f793ae7f99d26fffd8567b0309">c10cd0fa1d72...</code></td>
         </tr>
         
         <tr>
             <td><strong>#74</strong></td>
             <td>51,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm4</code></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm3</code></td>
             <td><code>rasa-host-2</code></td>
-            <td>0.1793 s</td>
-            <td>0.1309 s</td>
+            <td>0.2525 s</td>
+            <td>0.1515 s</td>
             <td><code title="5b357305ec9f839592009da759e6e184f57cca268072d7fbbbb640d0e76184be">5b357305ec9f...</code></td>
         </tr>
         
@@ -983,43 +986,43 @@
             <td><strong>#75</strong></td>
             <td>91,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.2248 s</td>
-            <td>0.2246 s</td>
+            <td><code>rasa-vm4</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.4343 s</td>
+            <td>0.2380 s</td>
             <td><code title="88c753e937c8037e66b6335b5829a9031424588c81a9a56d100a32e4726748bf">88c753e937c8...</code></td>
         </tr>
         
         <tr>
             <td><strong>#76</strong></td>
             <td>79,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
             <td><code>rasa-vm4</code></td>
             <td><code>rasa-host-2</code></td>
-            <td>0.2837 s</td>
-            <td>0.1851 s</td>
+            <td>0.3567 s</td>
+            <td>0.2104 s</td>
             <td><code title="f4ce730a5d3d7b72ccd4d4bd26da8ded0903661b26b4300290b7f6657fb085f0">f4ce730a5d3d...</code></td>
         </tr>
         
         <tr>
             <td><strong>#77</strong></td>
             <td>77,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
             <td><code>rasa-vm1</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.1603 s</td>
-            <td>0.1601 s</td>
+            <td>0.1468 s</td>
+            <td>0.1464 s</td>
             <td><code title="50f8c32ad4a6e109847a57ef5a4190368e7927b3e8581dde15022e0abea48103">50f8c32ad4a6...</code></td>
         </tr>
         
         <tr>
             <td><strong>#78</strong></td>
             <td>91,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm4</code></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm3</code></td>
             <td><code>rasa-host-2</code></td>
-            <td>0.4095 s</td>
-            <td>0.2404 s</td>
+            <td>0.3765 s</td>
+            <td>0.2184 s</td>
             <td><code title="88c753e937c8037e66b6335b5829a9031424588c81a9a56d100a32e4726748bf">88c753e937c8...</code></td>
         </tr>
         
@@ -1029,30 +1032,30 @@
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
             <td><code>rasa-vm1</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.3179 s</td>
-            <td>0.3175 s</td>
+            <td>0.2620 s</td>
+            <td>0.2615 s</td>
             <td><code title="9446b9cde0f8ea3112681e9b5cb7d355ea2a0c3d1ad5e3279e12e9278ef058aa">9446b9cde0f8...</code></td>
         </tr>
         
         <tr>
             <td><strong>#80</strong></td>
             <td>85,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm3</code></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm4</code></td>
             <td><code>rasa-host-2</code></td>
-            <td>0.3570 s</td>
-            <td>0.2079 s</td>
+            <td>0.3698 s</td>
+            <td>0.2097 s</td>
             <td><code title="27812f4854714c821656858ff23aabbbc06d5ed9873b5f6741f0edbca0851855">27812f485471...</code></td>
         </tr>
         
         <tr>
             <td><strong>#81</strong></td>
             <td>71,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm4</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>0.3437 s</td>
-            <td>0.1968 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm1</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>0.1384 s</td>
+            <td>0.1381 s</td>
             <td><code title="d50b543dc363c70c5ffd62d29746e38911b050bd668c74b4b98798b271f5cfb1">d50b543dc363...</code></td>
         </tr>
         
@@ -1060,10 +1063,10 @@
             <td><strong>#82</strong></td>
             <td>125,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm4</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>0.5644 s</td>
-            <td>0.3010 s</td>
+            <td><code>rasa-vm1</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>0.2544 s</td>
+            <td>0.2541 s</td>
             <td><code title="2ef760ad6f43d352a261e6ff607a876a6ebf81c31dc4a9c7283e849391d188d8">2ef760ad6f43...</code></td>
         </tr>
         
@@ -1071,54 +1074,54 @@
             <td><strong>#83</strong></td>
             <td>712,500 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>1.6717 s</td>
-            <td>1.6700 s</td>
+            <td><code>rasa-vm4</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>3.0762 s</td>
+            <td>1.5600 s</td>
             <td><code title="c6f6d4ee2c927c621ded2cdb3b64b6a7980f5287291d9edd2b519fe418d88789">c6f6d4ee2c92...</code></td>
         </tr>
         
         <tr>
             <td><strong>#84</strong></td>
             <td>49,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.1411 s</td>
-            <td>0.1409 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm4</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.1909 s</td>
+            <td>0.1191 s</td>
             <td><code title="59214c4ae42c547e193c244a0bea76206d452b37eb5a883b68d0a8d80501db55">59214c4ae42c...</code></td>
         </tr>
         
         <tr>
             <td><strong>#85</strong></td>
             <td>47,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.0899 s</td>
-            <td>0.0895 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm3</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.1750 s</td>
+            <td>0.1400 s</td>
             <td><code title="edbaf4a5ee44ac738dee04edabf7b05ffa24c2c55177e0e05eb338c041e49292">edbaf4a5ee44...</code></td>
         </tr>
         
         <tr>
             <td><strong>#86</strong></td>
             <td>40,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm4</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>0.1815 s</td>
-            <td>0.1129 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm2</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>0.0764 s</td>
+            <td>0.0763 s</td>
             <td><code title="f7e0ad14e6fe2350626238a39950dda77a533a11a6ee4ab55030914ac1596451">f7e0ad14e6fe...</code></td>
         </tr>
         
         <tr>
             <td><strong>#87</strong></td>
             <td>87,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.2457 s</td>
-            <td>0.2454 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm3</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.3718 s</td>
+            <td>0.2221 s</td>
             <td><code title="87da052f70741c685dca3b77d01946f668d0246919d997d98389a3df507d93a9">87da052f7074...</code></td>
         </tr>
         
@@ -1126,21 +1129,21 @@
             <td><strong>#88</strong></td>
             <td>125,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
+            <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.2431 s</td>
-            <td>0.2425 s</td>
+            <td>0.2786 s</td>
+            <td>0.2783 s</td>
             <td><code title="2ef760ad6f43d352a261e6ff607a876a6ebf81c31dc4a9c7283e849391d188d8">2ef760ad6f43...</code></td>
         </tr>
         
         <tr>
             <td><strong>#89</strong></td>
             <td>75,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.1442 s</td>
-            <td>0.1439 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm3</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.2917 s</td>
+            <td>0.1858 s</td>
             <td><code title="d3c662f2a3550dfdc031778adb2755eac1ab4ba5cd0661c96b32163b7d6a0774">d3c662f2a355...</code></td>
         </tr>
         
@@ -1148,21 +1151,21 @@
             <td><strong>#90</strong></td>
             <td>337,500 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm3</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>1.4786 s</td>
-            <td>0.7770 s</td>
+            <td><code>rasa-vm1</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>0.8698 s</td>
+            <td>0.8687 s</td>
             <td><code title="925314027a4cbe9e6ba822e6e86eca9309f8ebc792c31cd726732213d782afc8">925314027a4c...</code></td>
         </tr>
         
         <tr>
             <td><strong>#91</strong></td>
             <td>61,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm1</code></td>
-            <td><code>rasa-host-1</code></td>
-            <td>0.1178 s</td>
-            <td>0.1176 s</td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm3</code></td>
+            <td><code>rasa-host-2</code></td>
+            <td>0.2313 s</td>
+            <td>0.1357 s</td>
             <td><code title="9c45fcff60798de0bf0b7d5d2cf8235d99f4636475cdf8e951cd5bc1a4ef6484">9c45fcff6079...</code></td>
         </tr>
         
@@ -1170,21 +1173,21 @@
             <td><strong>#92</strong></td>
             <td>93,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm4</code></td>
-            <td><code>rasa-host-2</code></td>
-            <td>0.4013 s</td>
-            <td>0.2433 s</td>
+            <td><code>rasa-vm2</code></td>
+            <td><code>rasa-host-1</code></td>
+            <td>0.1833 s</td>
+            <td>0.1831 s</td>
             <td><code title="daa3df84fb6b5dbb50f96da8a2c2b5cd691f5fc0c7cbe7d5a80dba0a44e6225f">daa3df84fb6b...</code></td>
         </tr>
         
         <tr>
             <td><strong>#93</strong></td>
             <td>49,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
             <td><code>rasa-vm3</code></td>
             <td><code>rasa-host-2</code></td>
-            <td>0.2680 s</td>
-            <td>0.1684 s</td>
+            <td>0.1742 s</td>
+            <td>0.1338 s</td>
             <td><code title="59214c4ae42c547e193c244a0bea76206d452b37eb5a883b68d0a8d80501db55">59214c4ae42c...</code></td>
         </tr>
         
@@ -1192,10 +1195,10 @@
             <td><strong>#94</strong></td>
             <td>113,000 MI</td>
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm3</code></td>
+            <td><code>rasa-vm4</code></td>
             <td><code>rasa-host-2</code></td>
-            <td>0.4670 s</td>
-            <td>0.2634 s</td>
+            <td>0.4753 s</td>
+            <td>0.2629 s</td>
             <td><code title="84ec35cf35c811b49704bf7de5ff4fe00defafa65cb1bd80368504834303a03b">84ec35cf35c8...</code></td>
         </tr>
         
@@ -1205,8 +1208,8 @@
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
             <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.2318 s</td>
-            <td>0.2315 s</td>
+            <td>0.2342 s</td>
+            <td>0.2340 s</td>
             <td><code title="0d3bdc5a6faf6b2e3d8b48cdb48e09336d6699cb3dc328c257749b4bc2846dc7">0d3bdc5a6faf...</code></td>
         </tr>
         
@@ -1216,41 +1219,41 @@
             <td><span class="badge badge-maxmin">MAX-MIN</span></td>
             <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>1.1615 s</td>
-            <td>1.1599 s</td>
+            <td>1.2862 s</td>
+            <td>1.2845 s</td>
             <td><code title="54879033403e82390b1305a0324ff71ceaeb9bfcbb4bb1f30b324c65bfbc4e53">54879033403e...</code></td>
         </tr>
         
         <tr>
             <td><strong>#97</strong></td>
             <td>55,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm3</code></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm4</code></td>
             <td><code>rasa-host-2</code></td>
-            <td>0.2784 s</td>
-            <td>0.1664 s</td>
+            <td>0.2116 s</td>
+            <td>0.1428 s</td>
             <td><code title="3ad6f966eca7ea1a5ae54a7f4920382fc0063ee9cb4a0167d91dc986fc596157">3ad6f966eca7...</code></td>
         </tr>
         
         <tr>
             <td><strong>#98</strong></td>
             <td>65,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
             <td><code>rasa-vm2</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.1284 s</td>
-            <td>0.1282 s</td>
+            <td>0.1239 s</td>
+            <td>0.1238 s</td>
             <td><code title="05265ba2b1e8b53099d96155ce16f072e1718c08d7d38fe70fd00930513bdc89">05265ba2b1e8...</code></td>
         </tr>
         
         <tr>
             <td><strong>#99</strong></td>
             <td>79,000 MI</td>
-            <td><span class="badge badge-maxmin">MAX-MIN</span></td>
-            <td><code>rasa-vm2</code></td>
+            <td><span class="badge badge-minmin">MIN-MIN</span></td>
+            <td><code>rasa-vm1</code></td>
             <td><code>rasa-host-1</code></td>
-            <td>0.1576 s</td>
-            <td>0.1574 s</td>
+            <td>0.2191 s</td>
+            <td>0.2189 s</td>
             <td><code title="f4ce730a5d3d7b72ccd4d4bd26da8ded0903661b26b4300290b7f6657fb085f0">f4ce730a5d3d...</code></td>
         </tr>
         
